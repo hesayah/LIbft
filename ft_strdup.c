@@ -6,7 +6,7 @@
 /*   By: hesayah <hesayah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 16:19:21 by hesayah           #+#    #+#             */
-/*   Updated: 2019/11/22 20:30:27 by hesayah          ###   ########.fr       */
+/*   Updated: 2021/04/21 08:06:25 by hesayah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@ char	*ft_strdup(const char *str)
 	char	*dest;
 
 	i = 0;
-	dest = NULL;
-	while (str[i])
+	while (str && str[i])
 		i++;
-	if (!(dest = malloc(sizeof(char) * i + 1)))
+	dest = (char *)malloc(sizeof(char) * (i + 1));
+	if (dest == NULL)
 		return (NULL);
+	ft_memset(dest, 0, i + 1);
 	i = 0;
-	while (str[i])
+	while (str && str[i])
 	{
 		dest[i] = str[i];
 		i++;

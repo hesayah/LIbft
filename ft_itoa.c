@@ -37,40 +37,34 @@ static char	*ft_strrev(char *str)
 	long	i;
 	long	j;
 	long	len;
-	char	*temp;
+	char	*tmp;
 
 	len = ft_strlen(str);
 	j = len;
-	if (!(temp = (char*)malloc(sizeof(char) * (len + 1))))
+	tmp = (char *)malloc(sizeof(char) * (len + 1));
+	if (tmp == NULL)
 		return (NULL);
 	i = 0;
 	if (str[0] == '-')
 	{
-		temp[0] = '-';
+		tmp[0] = '-';
 		i = 1;
 	}
 	while (i < len)
 	{
-		temp[i] = str[j - 1];
+		tmp[i] = str[j - 1];
 		i++;
 		j--;
 	}
-	temp[i] = '\0';
-	return (temp);
+	tmp[i] = '\0';
+	return (tmp);
 }
 
-char		*ft_itoa(int n)
+static void	ft_itoa_two(char *num, long nb, int len)
 {
-	int		len;
 	long	i;
-	long	nb;
-	char	*num;
 
 	i = 0;
-	nb = n;
-	len = ft_len(nb);
-	if (!(num = (char*)malloc(sizeof(char) * (len + 1))))
-		return (NULL);
 	if (nb < 0)
 	{
 		num[0] = '-';
@@ -84,6 +78,21 @@ char		*ft_itoa(int n)
 		i++;
 	}
 	num[len] = '\0';
+}
+
+char	*ft_itoa(int n)
+{
+	int		len;
+	long	nb;
+	char	*num;
+
+	nb = n;
+	len = ft_len(nb);
+	num = (char *)malloc(sizeof(char) * (len + 1));
+	if (num == NULL)
+		return (NULL);
+	ft_memset(num, 0, len + 1);
+	ft_itoa_two(num, nb, len);
 	num = ft_strrev(num);
 	return (num);
 }

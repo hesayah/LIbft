@@ -14,9 +14,9 @@
 
 char	*ft_strrchr(const char *str, int c)
 {
-	int i;
-	int j;
-	int k;
+	int	i;
+	int	j;
+	int	k;
 
 	i = 0;
 	j = 0;
@@ -31,8 +31,8 @@ char	*ft_strrchr(const char *str, int c)
 		i++;
 	}
 	if (j > 0)
-		return ((char*)&str[j]);
+		return ((char *)&str[j]);
 	else if (str[0] == c)
-		return ((char*)str);
+		return ((char *)str);
 	return (NULL);
 }

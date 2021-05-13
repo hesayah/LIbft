@@ -6,7 +6,7 @@
 /*   By: hesayah <hesayah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 17:15:41 by hesayah           #+#    #+#             */
-/*   Updated: 2019/11/22 21:23:48 by hesayah          ###   ########.fr       */
+/*   Updated: 2021/04/18 16:32:08 by hesayah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,16 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
+# include <stdio.h>
 
-typedef struct		s_list
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }					t_list;
 
+void				ft_free(char **tab);
+void				ft_strcpy(char *dst, const char *src);
 void				*ft_memset(void *str, int c, size_t len);
 void				ft_bzero(void *str, size_t n);
 void				*ft_memcpy(void *dst, const void *src, size_t len);
@@ -56,6 +59,7 @@ char				*ft_strmapi(char const *str, char (*f)(unsigned int, char));
 void				ft_putchar_fd(char c, int fd);
 void				ft_putendl_fd(char *str, int fd);
 void				ft_putnbr_fd(int n, int fd);
+char				**ft_add_str_tab(char **tab, char *str);
 void				ft_putstr_fd(char *str, int fd);
 void				ft_lstadd_back(t_list **alst, t_list *new);
 void				ft_lstadd_front(t_list **alst, t_list *new);
@@ -64,8 +68,9 @@ void				ft_lstdelone(t_list *lst, void (*del)(void*));
 void				ft_lstiter(t_list *lst, void (*f)(void*));
 t_list				*ft_lstlast(t_list *lst);
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void*),
-void (*del)(void*));
+						void (*del)(void*));
 t_list				*ft_lstnew(void *content);
 int					ft_lstsize(t_list *lst);
+int					ft_c_in_str(char c, char *s2);
 
 #endif

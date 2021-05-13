@@ -6,7 +6,7 @@
 /*   By: hesayah <hesayah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 14:10:30 by hesayah           #+#    #+#             */
-/*   Updated: 2019/11/25 18:00:54 by hesayah          ###   ########.fr       */
+/*   Updated: 2021/02/03 12:19:06 by hesayah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 static int	ft_nc(char const *str, char c)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
-	if (!str[0])
-		return (0);
 	i = 1;
 	j = 1;
+	if (str[0] == '\0')
+		return (0);
 	while (str[i])
 	{
 		if (str[i] == c && str[i + 1] != '\0' && str[i - 1] != c)
@@ -36,7 +36,7 @@ static int	ft_nc(char const *str, char c)
 
 static int	ft_lnmod(char const *str, char c, int index)
 {
-	static int i;
+	static int	i;
 
 	i = 0;
 	while (str[i + index] != '\0')
@@ -50,12 +50,13 @@ static int	ft_lnmod(char const *str, char c, int index)
 
 static char	*ft_strdp(const char *str, char *new1, int index, char c)
 {
-	int i;
-	int len;
+	int	i;
+	int	len;
 
 	len = ft_lnmod(str, c, index);
-	if (!(new1 = (char*)malloc(sizeof(char) + len)))
-		new1 = NULL;
+	new1 = (char *)malloc(sizeof(char) + len);
+	if (new1 == NULL)
+		return (NULL);
 	i = 0;
 	while (i < len)
 	{
@@ -66,44 +67,44 @@ static char	*ft_strdp(const char *str, char *new1, int index, char c)
 	return (new1);
 }
 
-static void	ft_free(char **tab, int i)
+static int	creat_tab(char **new, const char *str, char c, int c_word)
 {
-	int j;
+	int	i;
+	int	index;
 
-	j = 0;
-	while (j <= i)
+	i = 0;
+	index = 0;
+	while (i < c_word)
 	{
-		free(tab[j]);
-		j++;
+		while (str[index] == c)
+			index++;
+		new[i] = ft_strdp(str, new[i], index, c);
+		if (new[i] == NULL)
+		{
+			ft_free(new);
+			return (0);
+		}
+		index += ft_lnmod(str, c, index);
+		i++;
 	}
-	free(tab);
+	new[c_word] = NULL;
+	return (1);
 }
 
-char		**ft_split(char const *str, char c)
+char	**ft_split(char const *str, char c)
 {
-	int		i;
-	int		j;
-	int		index;
+	int		c_word;
+	int		ret;
 	char	**new;
 
 	if (!str)
 		return (NULL);
-	index = 0;
-	j = ft_nc(str, c);
-	if (!(new = (char**)malloc(sizeof(char*) * (j + 1))))
+	c_word = ft_nc(str, c);
+	new = (char **)malloc(sizeof(char *) * (c_word + 1));
+	if (new == NULL)
 		return (NULL);
-	i = -1;
-	while (++i < j)
-	{
-		while (str[index] == c)
-			index++;
-		if (!(new[i] = ft_strdp(str, new[i], index, c)))
-		{
-			ft_free(new, i);
-			return (NULL);
-		}
-		index += ft_lnmod(str, c, index);
-	}
-	new[j] = NULL;
+	ret = creat_tab(new, str, c, c_word);
+	if (ret == 0)
+		return (NULL);
 	return (new);
 }

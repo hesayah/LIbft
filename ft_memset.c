@@ -6,7 +6,7 @@
 /*   By: hesayah <hesayah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 16:57:01 by hesayah           #+#    #+#             */
-/*   Updated: 2019/11/19 18:35:57 by hesayah          ###   ########.fr       */
+/*   Updated: 2021/04/21 08:21:04 by hesayah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ void	*ft_memset(void *str, int c, size_t len)
 		str2[i] = (unsigned char)c;
 		i++;
 	}
-	return ((void*)str);
+	return ((void *)str);
 }

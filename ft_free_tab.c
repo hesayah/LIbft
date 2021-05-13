@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_free_tab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hesayah <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: hesayah <hesayah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/04 18:24:42 by hesayah           #+#    #+#             */
-/*   Updated: 2019/11/15 15:09:04 by hesayah          ###   ########.fr       */
+/*   Created: 2021/01/10 15:38:36 by hesayah           #+#    #+#             */
+/*   Updated: 2021/04/18 15:26:46 by hesayah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_tolower(int c)
+void	ft_free(char **tab)
 {
-	if (c >= 65 && c <= 90)
-		return (c + 32);
-	else
-		return (c);
+	int	i;
+
+	i = 0;
+	while (tab[i] != NULL)
+	{
+		free(tab[i]);
+		tab[i] = NULL;
+		i++;
+	}
+	free(tab);
 }

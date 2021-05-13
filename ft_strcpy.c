@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hesayah <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: hesayah <hesayah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/04 18:24:42 by hesayah           #+#    #+#             */
-/*   Updated: 2019/11/15 15:09:04 by hesayah          ###   ########.fr       */
+/*   Created: 2021/01/10 16:35:49 by hesayah           #+#    #+#             */
+/*   Updated: 2021/03/27 15:07:39 by hesayah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_tolower(int c)
+void	ft_strcpy(char *dst, const char *src)
 {
-	if (c >= 65 && c <= 90)
-		return (c + 32);
-	else
-		return (c);
+	size_t	i;
+
+	i = 0;
+	while (src[i] && dst[i] && src[i] != '\0')
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
 }

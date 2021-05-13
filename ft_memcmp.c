@@ -18,15 +18,15 @@ int	ft_memcmp(const void *str1, const void *str2, size_t n)
 	unsigned char	*b;
 	size_t			i;
 
-	a = (unsigned char*)str1;
-	b = (unsigned char*)str2;
+	a = (unsigned char *)str1;
+	b = (unsigned char *)str2;
 	i = 0;
 	if (!str1 && !str2)
 		return (0);
 	while (i < n)
 	{
 		if (a[i] != b[i])
-			return (((unsigned char*)a)[i] - ((unsigned char*)b)[i]);
+			return (((unsigned char *)a)[i] - ((unsigned char *)b)[i]);
 		i++;
 	}
 	return (0);

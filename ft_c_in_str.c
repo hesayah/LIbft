@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_c_in_str.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hesayah <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: hesayah <hesayah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/04 18:24:42 by hesayah           #+#    #+#             */
-/*   Updated: 2019/11/15 15:09:04 by hesayah          ###   ########.fr       */
+/*   Created: 2021/02/04 14:54:55 by hesayah           #+#    #+#             */
+/*   Updated: 2021/03/27 15:10:00 by hesayah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_tolower(int c)
+int	ft_c_in_str(char c, char *s2)
 {
-	if (c >= 65 && c <= 90)
-		return (c + 32);
-	else
-		return (c);
+	int	i;
+
+	i = 0;
+	while (s2[i])
+	{
+		if (c == s2[i])
+			return (0);
+		i++;
+	}
+	return (1);
 }
